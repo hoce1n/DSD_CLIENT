@@ -1,0 +1,148 @@
+/* استایل‌های چاپ برای فاکتور تحویل */
+@media print {
+  /* تنظیمات کلی صفحه */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* حذف عناصر غیرضروری */
+  .no-print,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* تنظیمات body */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    font-family: 'Vazirmatn', 'Tahoma', Arial, sans-serif !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    color: black !important;
+    direction: rtl !important;
+    text-align: right !important;
+  }
+
+  /* کانتینر اصلی */
+  .print-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+  }
+
+  /* هدر فاکتور */
+  .print-header {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* بخش‌های مختلف */
+  .print-section {
+    page-break-inside: avoid;
+    margin-bottom: 15px !important;
+  }
+
+  /* جدول */
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 10px 0 !important;
+    font-size: 11pt !important;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #333 !important;
+    padding: 6px 8px !important;
+    text-align: right !important;
+    vertical-align: top !important;
+  }
+
+  .print-table th {
+    background-color: #f5f5f5 !important;
+    font-weight: bold !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* بخش امضا */
+  .signature-section {
+    page-break-inside: avoid;
+    margin-top: 30px !important;
+  }
+
+  .signature-box {
+    border-top: 2px solid #000 !important;
+    margin-top: 50px !important;
+    padding-top: 8px !important;
+    text-align: center !important;
+    font-size: 10pt !important;
+  }
+
+  /* تنظیمات رنگ */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* حذف سایه و border-radius */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* تنظیمات فونت */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold !important;
+    margin: 10px 0 5px 0 !important;
+  }
+
+  p {
+    margin: 5px 0 !important;
+  }
+
+  /* تنظیمات grid برای چاپ */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > div {
+    display: block !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* تنظیمات خاص برای موبایل */
+  @media print and (max-width: 600px) {
+    .print-table {
+      font-size: 9pt !important;
+    }
+    
+    .print-table th,
+    .print-table td {
+      padding: 4px !important;
+    }
+  }
+}
+
+/* تنظیمات نمایش عادی */
+@media screen {
+  .print-container {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+} 

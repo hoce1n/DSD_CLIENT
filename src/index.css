@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "./assets/fonts/fonts.css";
+
+body {
+  /* فونت اصلی: Lahzeh برای متن اصلی */
+  font-family: 'Lahzeh', 'Vazirmatn', Arial, sans-serif;
+}
+
+/* 🎯 تنظیمات فونت‌های مختلف */
+h1, h2, h3, h4, h5, h6, .heading {
+  /* فونت تیترها: Melli */
+  font-family: 'Melli', 'Vazirmatn', Arial, sans-serif;
+}
+
+
