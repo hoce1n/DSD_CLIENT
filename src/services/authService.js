@@ -62,7 +62,7 @@ api.interceptors.response.use(
 export const authService = {
   // ورود به سیستم
   login: async (username, password) => {
-    const response = await api.post('/api/apiauth/login', {
+    const response = await api.post(`${API_BASE_URL}/api/apiauth/login`, {
       username,
       password,
     });
