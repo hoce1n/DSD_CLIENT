@@ -1,12 +1,7 @@
 import axios from 'axios';
 
-// Base URL for the API
-// در development: از proxy استفاده می‌کنیم
-// در production: از URL کامل بک‌اند استفاده می‌کنیم
-// توجه: بک‌اند انتظار دارد که URL شامل /api باشد
-const BASE_URL = import.meta.env.PROD 
-  ? 'https://api.rahaan.ir/api' 
-  : '/api';
+const BASE_URL = 'https://api.rahaan.ir/api';
+
 
 // Create axios instance
 const api = axios.create({
@@ -52,8 +47,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refreshToken');
         
         if (refreshToken) {
-          // استفاده از api instance به جای axios مستقیم تا baseURL و interceptors اعمال شوند
-          const response = await api.post('/apiauth/refresh', {
+          const response = await axios.post(`${BASE_URL}/apiauth/refresh`, {
             refreshToken: refreshToken
           });
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api.rahaan.ir';
+const API_BASE_URL = 'https://api.rahaan.ir/api';
 
 // ایجاد axios instance با تنظیمات پایه
 const api = axios.create({
@@ -36,7 +36,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refreshToken');
         if (refreshToken) {
-          const response = await axios.post(`${API_BASE_URL}/api/apiauth/refresh`, {
+          const response = await axios.post(`/api/apiauth/refresh`, {
             refreshToken,
           });
 
@@ -62,7 +62,7 @@ api.interceptors.response.use(
 export const authService = {
   // ورود به سیستم
   login: async (username, password) => {
-    const response = await api.post(`${API_BASE_URL}/api/apiauth/login`, {
+    const response = await api.post(`/api/apiauth/login`, {
       username,
       password,
     });
