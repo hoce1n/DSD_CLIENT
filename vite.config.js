@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5012',
+        target: 'https://api.rahaan.ir',
         changeOrigin: true,
         secure: false,
       }
