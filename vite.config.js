@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://api.rahaan.ir',
+        target: 'https://api.rahaan.ir/api',
         changeOrigin: true,
         secure: false,
       }

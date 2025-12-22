@@ -4,7 +4,7 @@ import axios from 'axios';
 // در development: از proxy استفاده می‌کنیم
 // در production: از URL کامل بک‌اند استفاده می‌کنیم
 const BASE_URL = import.meta.env.PROD 
-  ? 'https://api.rahaan.ir' 
+  ? 'https://api.rahaan.ir/api' 
   : '/api';
 
 // Create axios instance
