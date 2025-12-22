@@ -25,7 +25,6 @@ const GlobalSearch = () => {
     error 
   } = useSelector((state) => state.search);
 
-  // بستن نتایج جستجو با کلیک خارج از کامپوننت
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -38,7 +37,6 @@ const GlobalSearch = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // جستجو با تاخیر
   useEffect(() => {
     const delayedSearch = setTimeout(() => {
       if (query.trim().length >= 2) {
@@ -145,10 +143,10 @@ const GlobalSearch = () => {
     <div className="relative w-full" ref={searchRef}>
       {/* Input Field */}
       <div className={`relative transition-all duration-200 ${
-        isFocused ? 'ring-2 ring-blue-500 ring-opacity-50' : ''
+        isFocused ? 'ring-2 ring-primary/50 rounded-lg ring-opacity-50' : ''
       }`}>
         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-          <Search className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+          <Search className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
         </div>
         <input
           ref={inputRef}
@@ -157,12 +155,12 @@ const GlobalSearch = () => {
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           placeholder="جستجو در سیستم..."
-          className="block w-full !px-10 py-2 sm:py-2.5 border border-gray-300 rounded-lg bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-0 transition-colors text-sm sm:text-base placeholder-gray-500"
+          className="block w-full !px-10 py-2 sm:py-2.5 border border-muted rounded-lg bg-accent focus:bg-background focus:border-primary focus:ring-0 transition-colors text-sm sm:text-base placeholder-muted-foreground"
         />
         {query && (
           <button
             onClick={handleClearInput}
-            className="absolute inset-y-0 left-0 pr-3 flex items-center"
+            className="absolute inset-y-0 left-0 pl-3 flex items-center"
           >
             <X className="h-4 w-4 text-gray-400 hover:text-gray-600" />
           </button>

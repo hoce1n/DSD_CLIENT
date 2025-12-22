@@ -16,7 +16,6 @@ import Reports from './pages/Reports/Reports';
 import DeliveryInvoice from './components/DeliveryInvoice';
 import UpdateDeliveryQuantities from './components/UpdateDeliveryQuantities';
 import PrintTest from './components/PrintTest';
-import ProtectedRoute from './components/ProtectedRoute';
 import PWAInstallButton from './components/PWAInstallButton';
 import OnlineStatus from './components/OnlineStatus';
 
@@ -30,13 +29,11 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            {/* صفحات احراز هویت */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/complete-profile" element={<CompleteProfile />} />
             
-            {/* صفحات اصلی با Layout */}
-            <Route path="/" element={<Layout />}>
+              <Route path="/" element={<Layout />}>
               <Route index element={<Dashboard />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="orders/*" element={<Orders />} />

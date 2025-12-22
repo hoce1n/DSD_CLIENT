@@ -9,6 +9,7 @@ const Login = () => {
     username: '',
     password: '',
   });
+  
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
@@ -193,7 +194,7 @@ const Login = () => {
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500">
-          <p>© ۱۴۰۳ سامانه سفارش‌یار DSD. تمامی حقوق محفوظ است.</p>
+          <p>© 1404 سامانه سفارش‌یار DSD. تمامی حقوق محفوظ است.</p>
         </div>
       </div>
     </div>

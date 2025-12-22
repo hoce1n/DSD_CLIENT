@@ -32,14 +32,12 @@ const Layout = () => {
   const location = useLocation();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
 
-  // اگر کاربر لاگین نکرده، به صفحه لاگین هدایت کن
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
     }
   }, [isAuthenticated, navigate]);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
@@ -51,7 +49,6 @@ const Layout = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile search when screen becomes larger
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -63,7 +60,6 @@ const Layout = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // اگر کاربر لاگین نکرده، چیزی نمایش نده
   if (!isAuthenticated) {
     return null;
   }
@@ -83,7 +79,6 @@ const Layout = () => {
     navigate('/settings');
   };
 
-  // Menu items based on user role
   const getAllMenuItems = () => {
     return [
       { name: 'داشبورد', path: '/dashboard', icon: Home, roles: ['Admin', 'Supervisor', 'User', 'SalesRep'] },
@@ -103,7 +98,6 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex" dir="rtl">
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 lg:hidden"
@@ -112,25 +106,23 @@ const Layout = () => {
           <div className="fixed inset-0 backdrop-blur-sm bg-gray-600/30"></div>
         </div>
       )}
-
-      {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-58 sm:w-80 max-h-screen bg-white shadow-lg transform ${
+        className={`fixed inset-y-0 right-0 z-50 w-58 sm:w-80 max-h-screen bg-background shadow-lg transform ${
           sidebarOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 ease-in-out lg:translate-x-0 lg:sticky lg:inset-0 lg:flex lg:flex-col lg:w-64`}
       >
-        <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+        <div className="flex items-center justify-between h-16 px-4 border-b">
           <div className="flex items-center">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <ShoppingCart className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <img src="/favicon.png" alt="Rahaan Logo" />
             </div>
-            <span className="mr-3 text-lg sm:text-xl font-bold heading text-gray-800">
+            <span className="mr-3 text-lg sm:text-xl font-bold">
               سفارش‌یار
             </span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+            className="lg:hidden p-2 rounded-md text-muted-foreground"
           >
             <X className="w-5 h-5" />
           </button>
@@ -150,15 +142,15 @@ const Layout = () => {
                     }}
                     className={`w-full flex items-center px-4 py-3 text-right rounded-lg transition-colors duration-200 group text-sm sm:text-base ${
                       isActive
-                        ? 'bg-blue-100 text-blue-700 border-r-4 border-blue-600'
-                        : 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                        ? 'bg-primary/10 text-primary border-r-4 border-primary/70'
+                        : 'text-forground hover:bg-primary/5 hover:text-primary'
                     }`}
                   >
                     <item.icon 
                       className={`w-5 h-5 ml-3 transition-colors duration-200 ${
                         isActive 
-                          ? 'text-blue-600' 
-                          : 'text-gray-400 group-hover:text-blue-600'
+                          ? 'text-primary' 
+                          : 'text-muted-foreground group-hover:text-primary'
                       }`} 
                     />
                     <span className="truncate">{item.name}</span>
@@ -172,8 +164,8 @@ const Layout = () => {
         {/* User section */}
         <div className="p-4 border-t border-gray-200 absolute bottom-0 w-full">
           <div className="flex items-center mb-4">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-gray-600" />
+            <div className="w-10 h-10 bg-muted-foreground/20 rounded-full flex items-center justify-center">
+              <User className="w-6 h-6 text-secondary-foreground/80" />
             </div>
             <div className="mr-3 min-w-0 flex-1">
               <p className="text-sm font-medium text-gray-700 truncate">
@@ -184,9 +176,9 @@ const Layout = () => {
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center px-4 py-2 text-right text-red-600 rounded-lg hover:bg-red-50 transition-colors text-sm"
+            className="w-full flex items-center px-2 py-3 text-right text-destructive rounded-lg hover:bg-destructive/5 transition-colors text-sm"
           >
-            <LogOut className="w-4 h-4 mr-3" />
+            <LogOut className="w-4 h-4 ml-3" />
             خروج از سیستم
           </button>
         </div>
@@ -195,25 +187,24 @@ const Layout = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Top header */}
-        <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 flex-shrink-0">
-          <div className="flex items-center justify-between h-16 px-0 sm:px-6 lg:px-8">
+        <header className="bg-background shadow-sm border-b sticky top-0 z-30 flex-shrink-0">
+          <div className="flex items-center justify-between h-16 px-2 sm:px-6 lg:px-8">
             <div className="flex items-center min-w-0 flex-1">
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+                className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-muted-foreground/80"
               >
                 <Menu className="w-6 h-6" />
               </button>
-              <h1 className="text-base sm:text-xl lg:text-2xl font-semibold heading text-gray-900 truncate">
-                سامانه مدیریت سفارشات
+              <h1 className="text-base sm:text-xl lg:text-2xl font-semibold truncate">
+               رهان CRM
               </h1>
             </div>
 
             <div className="flex items-center gap-0 sm:gap-4">
-              {/* Mobile Search Toggle */}
               <button
                 onClick={() => setShowMobileSearch(!showMobileSearch)}
-                className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+                className="md:hidden p-2 rounded-md text-muted-foreground/60 hover:text-muted-foreground"
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -223,14 +214,13 @@ const Layout = () => {
                 <GlobalSearch />
               </div>
 
-              {/* Notifications */}
               <NotificationBell />
 
               {/* User menu */}
               <div className="relative" ref={userMenuRef}>
                 <button 
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center max-w-xs text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-gray-100 hover:bg-gray-200 transition-colors px-2 sm:px-3 py-2"
+                  className="flex items-center max-w-xs text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary bg-secondary/70 hover:bg-secondary transition-colors px-2 sm:px-3 py-2"
                 >
                   <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
                     <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />

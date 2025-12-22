@@ -8,6 +8,7 @@ import {
     deleteNotification,
     clearError
 } from '../store/slices/notificationSlice';
+import { Bell } from 'lucide-react';
 
 const NotificationBell = () => {
     const dispatch = useDispatch();
@@ -127,23 +128,11 @@ const NotificationBell = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="relative p-2 text-gray-600 hover:text-gray-800 rounded-lg hover:bg-gray-100 transition-colors"
             >
-                <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 17h5l-5-5V9a6 6 0 10-12 0v3l-5 5h5m7 0v1a3 3 0 11-6 0v-1m6 0H9"
-                    />
-                </svg>
+                <Bell className='w-5 text-muted-foreground/60 hover:text-muted-foreground' />
                 
                 {/* Badge */}
                 {unreadCount > 0 && (
-                    <span className="absolute -top-0.5 -left-0.5 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                    <span className="absolute top-1 left-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
                         {unreadCount > 99 ? '99+' : unreadCount}
                     </span>
                 )}

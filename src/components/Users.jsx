@@ -157,13 +157,14 @@ const Users = () => {
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 py-4 sm:py-6">
-            <div className="text-right flex-1">
+            <div className="text-right">
               <h1 className="text-xl sm:text-2xl font-bold text-gray-900">مدیریت کاربران</h1>
               <p className="mt-1 text-sm text-gray-500">
                 مجموع {totalCount} کاربر
               </p>
             </div>
             
+            <div className='flex gap-x-2'>
             {/* Action Buttons */}
             {isAdmin && (
               <div className="flex gap-3">
@@ -197,6 +198,7 @@ const Users = () => {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

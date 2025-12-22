@@ -1,9 +1,9 @@
 import { usePWA } from '../hooks/usePWA';
-import { Wifi, WifiOff } from 'lucide-react';
+import { WifiOff } from 'lucide-react';
 
 const OnlineStatus = () => {
   const { isOnline } = usePWA();
-
+  
   if (isOnline) return null;
 
   return (
