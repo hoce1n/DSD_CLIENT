@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://185.208.174.247:8080';
+const API_BASE_URL = 'https://api.rahaan.ir';
 
 // ایجاد axios instance با تنظیمات پایه
 const api = axios.create({
