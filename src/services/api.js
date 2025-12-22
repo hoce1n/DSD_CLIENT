@@ -2,8 +2,10 @@ import axios from 'axios';
 
 // Base URL for the API
 // در development: از proxy استفاده می‌کنیم
-// در production: از relative path استفاده می‌کنیم
-const BASE_URL = '/api';
+// در production: از URL کامل بک‌اند استفاده می‌کنیم
+const BASE_URL = import.meta.env.PROD 
+  ? 'https://api.rahaan.ir' 
+  : '/api';
 
 // Create axios instance
 const api = axios.create({
